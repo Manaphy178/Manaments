@@ -43,7 +43,7 @@ pageEncoding="UTF-8"%>
         let pass = $("#pass").val();
         let codPostal = $("#codPostal").val();
         //falta validar los datos antes de mandarlos a ServicioUsuarios
-        $.post("ServicioUsuarios", {
+        $.post("registrar-usuario-cliente", {
           nombre: nombre,
           apellido: apellido,
           nomUsuario: nomUsuario,

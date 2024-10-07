@@ -34,7 +34,7 @@ public class InstrumentosDAOImpl implements InstrumentosDAO {
 	@Override
 	public void registrarInstrumento(Instrumento i) {
 		this.jdbcTemplate.update(ConstantesSQL.SQL_REGISTRAR_INSTRUMENTO, i.getNombre(), i.getTipo(), i.getMarca(),
-				i.getGamma(), i.getDesc(), i.getPrecio());
+				i.getGamma(), i.getDesc(), i.getPrecio(), i.getUltimaModificacion());
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class InstrumentosDAOImpl implements InstrumentosDAO {
 	@Override
 	public void actualizarInstrumento(Instrumento i) {
 		this.jdbcTemplate.update(ConstantesSQL.SQL_ACTUALIZAR_INSTRUMENTO, i.getNombre(), i.getTipo(), i.getMarca(),
-				i.getGamma(), i.getDesc(), i.getPrecio(), i.getId());
+				i.getGamma(), i.getDesc(), i.getPrecio(), i.getId(), new Date());
 
 	}
 

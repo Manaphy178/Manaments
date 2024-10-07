@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Instrumento {
@@ -11,6 +13,7 @@ public class Instrumento {
 	private String desc;
 	private MultipartFile foto;
 	private double precio;
+	private Date ultimaModificacion;
 
 	public Instrumento() {
 		// TODO Auto-generated constructor stub
@@ -88,6 +91,14 @@ public class Instrumento {
 
 	public void setFoto(MultipartFile foto) {
 		this.foto = foto;
+	}
+
+	public Date getUltimaModificacion() {
+		return ultimaModificacion;
+	}
+
+	public void setUltimaModificacion(Date ultimaModificacion) {
+		this.ultimaModificacion = ultimaModificacion;
 	}
 
 }

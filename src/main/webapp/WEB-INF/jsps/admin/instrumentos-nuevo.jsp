@@ -15,7 +15,7 @@
 	Tipo: <springform:input path="tipo"/> <br>
 	Marca: <springform:input path="marca"/> <br>
 	Gamma: <springform:input path="gamma"/> <br>
-	Desc: <springform:textarea path="desc" rows="3" cols="12" /> <br>	
+	Description: <springform:textarea path="desc" rows="3" cols="12" /> <br>	
 	Foto: <springform:input path="foto" type="file" /> <br>
 	Precio: <springform:input path="precio" /> <br>
 	

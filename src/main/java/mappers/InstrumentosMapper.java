@@ -24,6 +24,7 @@ public class InstrumentosMapper implements RowMapper<Instrumento> {
 		i.setGamma(rs.getString("gamma"));
 		i.setDesc(rs.getString("description"));
 		i.setPrecio(rs.getDouble("precio"));
+		i.setUltimaModificacion(rs.getDate("ultima_modificacion"));
 		return i;
 	}
 

@@ -71,8 +71,33 @@ public class ControladorInstrumento {
 		return obtenerInstrumentos(model);
 	}
 
-	/*@RequestMapping("instrumentos-editar")
-	public String editarInstrumento(Model model, int id) {
+	@RequestMapping("instrumentos-editar")
+	public String editarInstrumento(String id, Model model) {
+		Instrumento i = instrumentosDAO.obtenerInstrumentoPorId(Long.parseLong(id));
+		model.addAttribute("instrumentoEditar", i);
+		return "admin/instrumentos-editar";
+	}
 
-	}*/
+	@RequestMapping("instrumentos-guardar-cambios")
+	public String guardarCambioInstrumento(Instrumento instrumentoEditar, Model model, HttpServletRequest request) {
+//		Antes de nada lo suyo seria validar los datos introducidos 
+		instrumentosDAO.actualizarInstrumento(instrumentoEditar);
+		String rutaRealDelProyecto = request.getServletContext().getRealPath("");
+		if (instrumentoEditar.getFoto().getSize() > 0) {
+//			Si se cumple este if es que han subido una nueva imagen
+			String rutaSubidas = request.getServletContext().getRealPath("") + "/subidas";
+			String rutaImagen = rutaSubidas + "/" + instrumentoEditar.getId() + ".jpg";
+			// instrumentoEditar.getFoto().getName();
+			try {
+				instrumentoEditar.getFoto().transferTo(new File(rutaImagen));
+				System.out.println("imagen actualizada en la ruta:"+rutaImagen);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} // end if archivo subido
+		return obtenerInstrumentos(model);
+	}
 }

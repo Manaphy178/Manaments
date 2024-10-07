@@ -1,0 +1,26 @@
+<!-- plantilla a usar por el js de index.html para 
+mostrar un listado de productos usando mustache -->
+<div style="margin: 10px">
+  <div>Listado de usuarios</div>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Nombre de Usuario</th>
+      <th>Email</th>
+      <th>Contraseña</th>
+      <th>Codigo Postal</th>
+    </tr>
+
+    {{#.}}
+    <tr>
+      <td>{{nombre}}</td>
+      <td>{{apellido}}</td>
+      <td>{{nomUsuario}}</td>
+      <td>{{email}}</td>
+      <td>{{pass}}</td>
+      <td>{{codPostal}}</td>
+    </tr>
+    {{/.}}
+  </table>
+</div>
