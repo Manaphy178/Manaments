@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../../../assets/menu.css" />
+    <link rel="stylesheet" href="../assets/menu.css" />
     <title>Editar Instrumento</title>
   </head>
   <body>

@@ -11,4 +11,6 @@ public class ConstantesSQL {
 			"SELECT * FROM tabla_instrumentos WHERE `tabla_instrumentos`.`id` = ?;";
 	public static final String SQL_ACTUALIZAR_INSTRUMENTO = 
 			"UPDATE `tabla_instrumentos` SET `nombre` = ?, `tipo` = ?, `marca` = ?, `gamma` = ?, `description` = ?, `precio` = ?, `ultima_modificacion` = ? WHERE `tabla_instrumentos`.`id` = ?";
+	public static final String SQL_OBTENER_USUARIOS = 
+			"Select * from tabla_usuarios";
 }

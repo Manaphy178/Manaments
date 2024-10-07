@@ -1,13 +1,16 @@
 package daosImpl;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
+import constantesSQL.ConstantesSQL;
 import daos.UsuariosDAO;
+import mappers.UsuariosMapper;
 import modelo.Usuario;
 
 public class UsuariosDAOImpl implements UsuariosDAO {
@@ -37,6 +40,12 @@ public class UsuariosDAOImpl implements UsuariosDAO {
 		valores.put("codPostal", u.getCodPostal());
 		this.simpleInsert.execute(valores);
 
+	}
+
+	@Override
+	public List<Usuario> obtenerUsuario() {
+		List<Usuario> usuarios = this.jdbcTemplate.query(ConstantesSQL.SQL_OBTENER_USUARIOS, new UsuariosMapper());
+		return null;
 	}
 
 }

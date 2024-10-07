@@ -4,8 +4,8 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../../../assets/portada.css" />
-    <link rel="stylesheet" href="../../../assets/menu.css" />
+    <link rel="stylesheet" href="../assets/portada.css" />
+    <link rel="stylesheet" href="../assets/menu.css" />
     <title>Gestionar Instrumentos</title>
   </head>
   <body>
@@ -16,8 +16,8 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <div class="annadir">
       <a href="instrumentos-nuevo">Añadir nuevo instrumento</a>
     </div>
-    <script src="../../../librerias_js/jquery.js"></script>
-    <script src="../../../librerias_js/mustache.js"></script>
+    <script src="../librerias_js/jquery.js"></script>
+    <script src="../librerias_js/mustache.js"></script>
     <script>
       function obtenerListadoAdmin() {
         $.ajax("obtener-productos-json").done(function (respuesta) {
@@ -30,7 +30,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
           $("#contenedor").html(texto_html);
         });
         let html_listado_productos_admin = "";
-        $.get("../../../plantillas/listado-productos-admin.html").done(
+        $.get("../plantillas/listado-productos-admin.html").done(
           function (res) {
             html_listado_productos_admin = res;
           }
@@ -52,7 +52,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
       </tr>
       <c:forEach items="${instrumentos}" var="elemento">
         <tr>
-          <td ><img src="subidas/${ elemento.id }.jpg?fum=${elemento.ultimaModificacion}" height="80px" /></td>
+          <td ><img src="../subidas/${ elemento.id }.jpg?fum=${elemento.ultimaModificacion}" height="80px" /></td>
           <td>${elemento.nombre}</td>
           <td>${elemento.tipo }</td>
           <td>${elemento.marca }</td>
