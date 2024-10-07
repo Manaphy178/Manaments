@@ -1,0 +1,38 @@
+<div style="margin: 10px">
+  <div>Listado de instrumentos de la tienda</div>
+  <table>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Nombre</th>
+      <th>Tipo</th>
+      <th>Marca</th>
+      <th>Descripcion</th>
+      <th>Gamma</th>
+      <th>Precio</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    {{#.}}
+    <tr>
+      <td><img src="subidas/{{ id }}.jpg" height="80px" /></td>
+      <td>{{nombre}}</td>
+      <td>{{tipo}}</td>
+      <td>{{marca}}</td>
+      <td class="description">{{desc}}</td>
+      <td>{{gamma}}</td>
+      <td>{{precio}}</td>
+      <td class="delete">
+        <a href="instrumentos-borrar?id={{id}}" class="delLink" onclick="return confirm('¿seguro?')"
+          >Borrar</a
+        >
+      </td>
+      <td class="edit">
+        <a href="instrumentos-editar?id={{id}}" class="editLink" onclick="return confirm('¿seguro?')"
+          >Editar</a
+        >
+      </td>
+    </tr>
+    {{/.}}
+  </table>
+</div>

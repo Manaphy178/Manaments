@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import daos.InstrumentosDAO;
 import modelo.Instrumento;
 
-
 @Controller
 @RequestMapping("admin/")
 public class ControladorInstrumento {
@@ -39,7 +38,7 @@ public class ControladorInstrumento {
 		Instrumento i = new Instrumento();
 		i.setPrecio(1);
 		model.addAttribute("nuevoInstrumento", i);
-		return "admin/instrumento-nuevo";
+		return "admin/instrumentos-nuevo";
 
 	}
 
@@ -69,7 +68,11 @@ public class ControladorInstrumento {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return obtenerInstrumentos(model);
 	}
+
+	/*@RequestMapping("instrumentos-editar")
+	public String editarInstrumento(Model model, int id) {
+
+	}*/
 }

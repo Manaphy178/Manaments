@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
     <script src="librerias_js/mustache.js"></script>
     <script>
       function obtenerProductos() {
-        $.ajax("ServicioProductos").done(function (respuesta) {
+        $.ajax("obtener-productos-json").done(function (respuesta) {
           let instrumento = JSON.parse(respuesta);
 
           let texto_html = "";
