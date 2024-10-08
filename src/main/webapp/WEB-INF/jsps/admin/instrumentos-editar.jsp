@@ -17,7 +17,7 @@ pageEncoding="UTF-8"%>
 	Tipo: <springform:input path="tipo"/> <br>
 	Marca: <springform:input path="marca"/> <br>
 	Gamma: <springform:input path="gamma"/> <br>
-	Description: <springform:textarea path="desc" rows="3" cols="12" /> <br>	
+	Description: <springform:textarea path="description" rows="3" cols="12" /> <br>	
 	Precio: <springform:input path="precio" /> <br>
 	Foto: <br><img height="200px" src="../subidas/${libroEditar.id}.jpg?fum=${libroEditar.ultimaModificacion}"/> <br>
 	<springform:input path="foto" type="file" /><br>

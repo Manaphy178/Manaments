@@ -7,18 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import daos.UsuariosDAO;
 import modelo.Usuario;
+import servicios.ServicioUsuarios;
 
 @Controller
 @RequestMapping("admin/")
 public class ControladorUsuario {
 	@Autowired
-	private UsuariosDAO usuariosDAO;
+	private ServicioUsuarios servicioUsuarios;
+
 	@RequestMapping("usuarios")
 	public String obtenerUsuarios(Model model) {
-		List<Usuario> usuarios=usuariosDAO.obtenerUsuario();
-		model.addAttribute("usuarios",usuarios);
+		List<Usuario> usuarios = servicioUsuarios.obtenerUsuario();
+		model.addAttribute("usuarios", usuarios);
 		return "admin/usuarios";
 	}
 }

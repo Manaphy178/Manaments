@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 
-import daos.InstrumentosDAO;
+
 import modelo.Instrumento;
+import servicios.ServicioInstrumento;
 
 @Controller
 public class ServicioWEBProductos {
 
 	@Autowired
-	private InstrumentosDAO instrumentosDAO;
+	private ServicioInstrumento servicioInstrumento;
 
 	@RequestMapping("obtener-productos-json")
 	public ResponseEntity<String> obtenerProductos() {
-		List<Instrumento> instrumentos = instrumentosDAO.obtenerInstrumentos();
+		List<Instrumento> instrumentos = servicioInstrumento.obtenerInstrumentos();
 		String respuesta = new Gson().toJson(instrumentos);
 		return new ResponseEntity<String>(respuesta, HttpStatus.OK);
 	}

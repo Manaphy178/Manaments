@@ -11,25 +11,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import daos.InstrumentosDAO;
 import modelo.Instrumento;
+import servicios.ServicioInstrumento;
 
 @Controller
 @RequestMapping("admin/")
 public class ControladorInstrumento {
 	@Autowired
-	private InstrumentosDAO instrumentosDAO;
+	private ServicioInstrumento servicioInstrumento;
 
 	@RequestMapping("instrumentos")
 	public String obtenerInstrumentos(Model model) {
-		List<Instrumento> instrumentos = instrumentosDAO.obtenerInstrumentos();
+		List<Instrumento> instrumentos = servicioInstrumento.obtenerInstrumentos();
 		model.addAttribute("instrumentos", instrumentos);
 		return "admin/instrumentos";
 	}
 
 	@RequestMapping("instrumentos-borrar")
 	public String borrarInstrumento(String id, Model model) {
-		instrumentosDAO.borrarInstrumento(Integer.parseInt(id));
+		servicioInstrumento.borrarInstrumento(Integer.parseInt(id));
 		return obtenerInstrumentos(model);
 	}
 
@@ -45,7 +45,7 @@ public class ControladorInstrumento {
 	@RequestMapping("instrumentos-guardar-nuevo")
 	public String guardarNuevoInstrumento(Instrumento nuevoInstrumento, Model model, HttpServletRequest request) {
 		// lo suyo seria valiar el libro antes de nada
-		instrumentosDAO.registrarInstrumento(nuevoInstrumento);
+		servicioInstrumento.registrarInstrumento(nuevoInstrumento);
 
 		// nuevoLibro ya tiene el archvo subido, simplemente
 		// queremos guardar el archivo en una ruta concreta
@@ -73,7 +73,7 @@ public class ControladorInstrumento {
 
 	@RequestMapping("instrumentos-editar")
 	public String editarInstrumento(String id, Model model) {
-		Instrumento i = instrumentosDAO.obtenerInstrumentoPorId(Long.parseLong(id));
+		Instrumento i = servicioInstrumento.obtenerInstrumentoPorId(Integer.parseInt(id));
 		model.addAttribute("instrumentoEditar", i);
 		return "admin/instrumentos-editar";
 	}
@@ -81,7 +81,7 @@ public class ControladorInstrumento {
 	@RequestMapping("instrumentos-guardar-cambios")
 	public String guardarCambioInstrumento(Instrumento instrumentoEditar, Model model, HttpServletRequest request) {
 //		Antes de nada lo suyo seria validar los datos introducidos 
-		instrumentosDAO.actualizarInstrumento(instrumentoEditar);
+		servicioInstrumento.actualizarInstrumento(instrumentoEditar);
 		String rutaRealDelProyecto = request.getServletContext().getRealPath("");
 		if (instrumentoEditar.getFoto().getSize() > 0) {
 //			Si se cumple este if es que han subido una nueva imagen
@@ -90,7 +90,7 @@ public class ControladorInstrumento {
 			// instrumentoEditar.getFoto().getName();
 			try {
 				instrumentoEditar.getFoto().transferTo(new File(rutaImagen));
-				System.out.println("imagen actualizada en la ruta:"+rutaImagen);
+				System.out.println("imagen actualizada en la ruta:" + rutaImagen);
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (IOException e) {

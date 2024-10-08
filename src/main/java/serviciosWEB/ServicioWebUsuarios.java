@@ -10,28 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
 
-import daos.UsuariosDAO;
 import modelo.Usuario;
+import servicios.ServicioUsuarios;
 
 @Controller
 public class ServicioWebUsuarios {
 
 	@Autowired
-	private UsuariosDAO usuariosDAO;
+	private ServicioUsuarios serviciosUsuarios;
 
 	@RequestMapping("registrar-usuario-cliente")
 	public ResponseEntity<String> registrarUsuario(String nombre, String apellido, String nomUsuario, String pass,
 			String email, long codPostal) {
 		Usuario u = new Usuario(nombre, apellido, nomUsuario, email, pass, codPostal);
 //		Lo suyo seria validar antes de registrar
-		usuariosDAO.registrarUsuario(u);
+		serviciosUsuarios.registrarUsuario(u);
 		return new ResponseEntity<String>("usuario registrado correctamente", HttpStatus.OK);
 
 	}
 
 	@RequestMapping("obtener-usuarios-json")
 	public ResponseEntity<String> obtenerClientes() {
-		List<Usuario> usuarios = usuariosDAO.obtenerUsuario();
+		List<Usuario> usuarios = serviciosUsuarios.obtenerUsuario();
 		String respuesta = new Gson().toJson(usuarios);
 		return new ResponseEntity<String>(respuesta, HttpStatus.OK);
 	}

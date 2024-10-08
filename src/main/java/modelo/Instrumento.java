@@ -2,15 +2,24 @@ package modelo;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
 import org.springframework.web.multipart.MultipartFile;
 
+@Entity
 public class Instrumento {
+	@Id
+	@GeneratedValue
 	private int id;
 	private String nombre;
 	private String tipo;
 	private String marca;
 	private String gamma;
-	private String desc;
+	private String description;
+	@Transient
 	private MultipartFile foto;
 	private double precio;
 	private Date ultimaModificacion;
@@ -19,13 +28,13 @@ public class Instrumento {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Instrumento(String nombre, String tipo, String marca, String gamma, String desc, double precio) {
+	public Instrumento(String nombre, String tipo, String marca, String gamma, String description, double precio) {
 		super();
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.marca = marca;
 		this.gamma = gamma;
-		this.desc = desc;
+		this.description = description;
 		this.precio = precio;
 	}
 
@@ -69,12 +78,12 @@ public class Instrumento {
 		this.gamma = gamma;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public int getId() {

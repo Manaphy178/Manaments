@@ -1,10 +1,11 @@
-package daos;
+package servicios;
 
 import java.util.List;
 
 import modelo.Usuario;
 
-public interface UsuariosDAO {
+public interface ServicioUsuarios {
+
 	void registrarUsuario(Usuario u);
 	List<Usuario> obtenerUsuario();
 }

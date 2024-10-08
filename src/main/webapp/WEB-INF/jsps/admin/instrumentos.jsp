@@ -56,7 +56,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
           <td>${elemento.nombre}</td>
           <td>${elemento.tipo }</td>
           <td>${elemento.marca }</td>
-          <td class="description">${elemento.desc }</td>
+          <td class="description">${elemento.description }</td>
           <td>${elemento.gamma }</td>
           <td>${elemento.precio } euros</td>
           <td>${elemento.ultimaModificacion }</td>
