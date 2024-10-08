@@ -13,17 +13,7 @@
         https://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<!-- configuracion de los controller -->
-	<!-- una regla importante en spring mvc es que hay que tener en el contenedor 
-		de spring una bean por cada controlador -->
-	<!-- vamos a decir que automaticamente por cada clase que haya en el paquete 
-		controladores, nos cree una bean -->
-	<!-- primero necesitamos activar el uso de todas las anotaciones en spring -->
-	<context:annotation-config />
-	<context:component-scan
-		base-package="controladores" />
-	<context:component-scan
-		base-package="serviciosWEB" />
+ 	<import resource="beans.xml"/>
 
 
 	<!-- vamos a meter aqui un bean concreta de spring que nos va a ayudar mucho 
@@ -41,15 +31,7 @@
 	</bean>
 
 	<!-- configuracion de los DAOs -->
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost/bd_tienda_instrumentos" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
-	</bean>
+	
 
 	<!-- DAOs -->
 	<bean id="instrumentosDAO" class="daosImpl.InstrumentosDAOImpl">
