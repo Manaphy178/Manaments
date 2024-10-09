@@ -12,7 +12,11 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
 
-
+	<!-- component scan crea una bean de cada de las clases marcadas como componente 
+		de spring en los paquetes indicados. @Controller -> controlador: clase que 
+		atiende rutas/url @Service -> servicios de cara a base de datos @Component 
+		-> componente generico @Repository -> componente que accede directamente 
+		a bd, p.ej los DAO -->
 
 	<context:annotation-config />
 	<context:component-scan
@@ -21,5 +25,7 @@
 		base-package="serviciosWEB" />
 	<context:component-scan
 		base-package="serviciosHiberImpl" />
+	<context:component-scan
+		base-package="servicioSetUp" />
 
 </beans>

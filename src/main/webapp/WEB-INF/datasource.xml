@@ -21,7 +21,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost/bd_tienda_instrumentos_hibernate" />
+			value="jdbc:mysql://localhost/bd_tienda_instrumentos_hibernate2" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
@@ -39,7 +39,10 @@
 					org.hibernate.dialect.MySQL5InnoDBDialect
 				</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+					<!-- cambiar update a create si no crea 
+				todas las tablas, una vez creadas volver 
+				a cambiar a update -->
 			</props>
 		</property>
 	</bean>

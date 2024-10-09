@@ -2,22 +2,27 @@ package modelo;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
+@Table(name = "tabla_instrumentos")
 public class Instrumento {
 	@Id
 	@GeneratedValue
 	private int id;
+	@Column(name = "nombre_instrumento",length = 120)
 	private String nombre;
 	private String tipo;
 	private String marca;
 	private String gamma;
+	@Column(length = 650)
 	private String description;
 	@Transient
 	private MultipartFile foto;
