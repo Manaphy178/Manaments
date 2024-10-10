@@ -16,7 +16,7 @@ import modelo.Usuario;
 import servicios.ServicioUsuarios;
 
 @Controller
-public class ServicioWebUsuarios {
+public class ServicioWEBUsuarios {
 
 	@Autowired
 	private ServicioUsuarios serviciosUsuarios;
@@ -31,12 +31,6 @@ public class ServicioWebUsuarios {
 
 	}
 
-	@RequestMapping("obtener-usuarios-json")
-	public ResponseEntity<String> obtenerClientes() {
-		List<Usuario> usuarios = serviciosUsuarios.obtenerUsuario();
-		String respuesta = new Gson().toJson(usuarios);
-		return new ResponseEntity<String>(respuesta, HttpStatus.OK);
-	}
 
 	@RequestMapping("identificar-usuario")
 	public ResponseEntity<String> identificarUsuario(String email, String pass, HttpServletRequest request) {

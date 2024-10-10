@@ -29,14 +29,17 @@ public class SetUpHiberImpl implements SetUp {
 			 * la idea es que si no hay ningun registro en la tabla de setup pues preparemos
 			 * los registros para todo el sistema
 			 */
-			Instrumento i1 = new Instrumento("Bajo", "bajo", "marca", "gamma", "description", 1, new Date(System.currentTimeMillis()));
-			Instrumento i2 = new Instrumento("guitarra", "guitarra", "marca", "gamma", "description", 2,new Date(System.currentTimeMillis()));
-			Instrumento i3 = new Instrumento("bateria", "bateria", "marca", "gamma", "description", 3,new Date(System.currentTimeMillis()));
+			Instrumento i1 = new Instrumento("Bajo", "bajo", "marca", "gamma", "description", 1,
+					new Date(System.currentTimeMillis()));
+			Instrumento i2 = new Instrumento("guitarra", "guitarra", "marca", "gamma", "description", 2,
+					new Date(System.currentTimeMillis()));
+			Instrumento i3 = new Instrumento("bateria", "bateria", "marca", "gamma", "description", 3,
+					new Date(System.currentTimeMillis()));
 			sessionFactory.getCurrentSession().save(i1);
 			sessionFactory.getCurrentSession().save(i2);
 			sessionFactory.getCurrentSession().save(i3);
-			Usuario u1 = new Usuario("javier", "gonzalez", "mana", "jgonzalez", "123", 28440);
-			Usuario u2 = new Usuario("sergio", "prados", "prapra", "sprados", "123", 28440);
+			Usuario u1 = new Usuario("Javier", "Gonzalez", "mana", "jgonzalez@centronelson.org", "123", 28440);
+			Usuario u2 = new Usuario("Sergio", "Prados", "prapra", "sprados@centronelson.org", "123", 28440);
 			sessionFactory.getCurrentSession().save(u1);
 			sessionFactory.getCurrentSession().save(u2);
 

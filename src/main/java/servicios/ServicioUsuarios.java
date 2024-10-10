@@ -8,7 +8,7 @@ public interface ServicioUsuarios {
 
 	void registrarUsuario(Usuario u);
 
-	List<Usuario> obtenerUsuario();
+	List<Usuario> obtenerUsuarios();
 
 	Usuario obtenerUsuarioPorEmailPass(String email, String pass);
 }

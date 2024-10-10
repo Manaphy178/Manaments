@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.hql.internal.ast.tree.RestrictableStatement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,9 +24,11 @@ public class ServicioUsuariosHiberImpl implements ServicioUsuarios {
 	}
 
 	@Override
-	public List<Usuario> obtenerUsuario() {
+	public List<Usuario> obtenerUsuarios() {
+		System.out.println("ServicioUsuarioHiberIMPL");
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(Usuario.class);
-		return c.list();
+		List<Usuario> us = c.list();
+		return us;
 	}
 
 	@Override
