@@ -29,8 +29,18 @@ public class Instrumento {
 	private double precio;
 	private Date ultimaModificacion;
 
-	public Instrumento() {
-		// TODO Auto-generated constructor stub
+	public Instrumento() {}
+
+	public Instrumento(String nombre, String tipo, String marca, String gamma, String description, double precio,
+			Date ultimaModificacion) {
+		super();
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.marca = marca;
+		this.gamma = gamma;
+		this.description = description;
+		this.precio = precio;
+		this.ultimaModificacion = ultimaModificacion;
 	}
 
 	public Instrumento(String nombre, String tipo, String marca, String gamma, String description, double precio) {

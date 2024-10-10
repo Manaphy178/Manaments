@@ -1,5 +1,7 @@
 package servicioSetUp;
 
+import java.sql.Date;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +29,9 @@ public class SetUpHiberImpl implements SetUp {
 			 * la idea es que si no hay ningun registro en la tabla de setup pues preparemos
 			 * los registros para todo el sistema
 			 */
-			Instrumento i1 = new Instrumento("Bajo", "bajo", "marca", "gamma", "description", 1);
-			Instrumento i2 = new Instrumento("guitarra", "guitarra", "marca", "gamma", "description", 2);
-			Instrumento i3 = new Instrumento("bateria", "bateria", "marca", "gamma", "description", 3);
+			Instrumento i1 = new Instrumento("Bajo", "bajo", "marca", "gamma", "description", 1, new Date(System.currentTimeMillis()));
+			Instrumento i2 = new Instrumento("guitarra", "guitarra", "marca", "gamma", "description", 2,new Date(System.currentTimeMillis()));
+			Instrumento i3 = new Instrumento("bateria", "bateria", "marca", "gamma", "description", 3,new Date(System.currentTimeMillis()));
 			sessionFactory.getCurrentSession().save(i1);
 			sessionFactory.getCurrentSession().save(i2);
 			sessionFactory.getCurrentSession().save(i3);

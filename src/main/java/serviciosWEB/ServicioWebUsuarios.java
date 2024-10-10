@@ -2,6 +2,8 @@ package serviciosWEB;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +35,22 @@ public class ServicioWebUsuarios {
 	public ResponseEntity<String> obtenerClientes() {
 		List<Usuario> usuarios = serviciosUsuarios.obtenerUsuario();
 		String respuesta = new Gson().toJson(usuarios);
+		return new ResponseEntity<String>(respuesta, HttpStatus.OK);
+	}
+
+	@RequestMapping("identificar-usuario")
+	public ResponseEntity<String> identificarUsuario(String email, String pass, HttpServletRequest request) {
+		String respuesta = "";
+		Usuario u = serviciosUsuarios.obtenerUsuarioPorEmailPass(email, pass);
+		if (u != null) {
+			respuesta = "Bienvenido " + u.getNombre() + " ya puedes comprar en la tienda";
+			/*
+			 * vamos a meter en sesion, la informacion del usuario que se ha identificado
+			 */
+			request.getSession().setAttribute("usuario", u);
+		} else {
+			respuesta = "email o pass incorrectos";
+		}
 		return new ResponseEntity<String>(respuesta, HttpStatus.OK);
 	}
 }

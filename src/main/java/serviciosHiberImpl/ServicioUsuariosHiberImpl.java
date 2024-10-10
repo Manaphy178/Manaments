@@ -2,8 +2,9 @@ package serviciosHiberImpl;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.hql.internal.ast.tree.RestrictableStatement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,23 @@ public class ServicioUsuariosHiberImpl implements ServicioUsuarios {
 	public List<Usuario> obtenerUsuario() {
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(Usuario.class);
 		return c.list();
+	}
+
+	@Override
+	public Usuario obtenerUsuarioPorEmailPass(String email, String pass) {
+		Usuario usuario = null;
+		/*
+		 * Con hibertante, criteria no es el unico mecanismo para comunicarse con la
+		 * base de datos, otras formas comunes son:
+		 */
+//		hql:psudo-lenguaje de consultas similar a sql
+		Criteria c = sessionFactory.getCurrentSession().createCriteria(Usuario.class);
+		c.add(Restrictions.eq("email", email));
+		c.add(Restrictions.eq("pass", pass));
+		if (c.uniqueResult() != null) {
+			usuario = (Usuario) c.uniqueResult();
+		}
+		return usuario;
 	}
 
 }

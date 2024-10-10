@@ -80,11 +80,11 @@ public class ControladorInstrumento {
 
 	@RequestMapping("instrumentos-guardar-cambios")
 	public String guardarCambioInstrumento(Instrumento instrumentoEditar, Model model, HttpServletRequest request) {
-//		Antes de nada lo suyo seria validar los datos introducidos 
+		// Antes de nada lo suyo seria validar los datos introducidos
 		servicioInstrumento.actualizarInstrumento(instrumentoEditar);
 		String rutaRealDelProyecto = request.getServletContext().getRealPath("");
 		if (instrumentoEditar.getFoto().getSize() > 0) {
-//			Si se cumple este if es que han subido una nueva imagen
+			// Si se cumple este if es que han subido una nueva imagen
 			String rutaSubidas = request.getServletContext().getRealPath("") + "/subidas";
 			String rutaImagen = rutaSubidas + "/" + instrumentoEditar.getId() + ".jpg";
 			// instrumentoEditar.getFoto().getName();
