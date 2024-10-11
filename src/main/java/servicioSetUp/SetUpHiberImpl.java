@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import modelo.Categoria;
 import modelo.Instrumento;
 import modelo.Usuario;
 
@@ -25,16 +26,27 @@ public class SetUpHiberImpl implements SetUp {
 		 */
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(modelo.SetUp.class);
 		if (c.list().size() == 0) {
+//			Vamos a crear unas categorias antes de nada
+			Categoria cuerda = new Categoria("Cuerda", "Categoria de instrumentos de cuerda");
+			Categoria viento = new Categoria("Viento", "Categoria de instrumentos de viento");
+			Categoria percusion = new Categoria("Percusion", "Categoria de instrumetos de percusion");
+			sessionFactory.getCurrentSession().save(cuerda);
+			sessionFactory.getCurrentSession().save(viento);
+			sessionFactory.getCurrentSession().save(percusion);
+
 			/*
 			 * la idea es que si no hay ningun registro en la tabla de setup pues preparemos
 			 * los registros para todo el sistema
 			 */
 			Instrumento i1 = new Instrumento("Bajo", "bajo", "marca", "gamma", "description", 1,
 					new Date(System.currentTimeMillis()));
+			i1.setCategoria(cuerda);
 			Instrumento i2 = new Instrumento("guitarra", "guitarra", "marca", "gamma", "description", 2,
 					new Date(System.currentTimeMillis()));
+			i2.setCategoria(cuerda);
 			Instrumento i3 = new Instrumento("bateria", "bateria", "marca", "gamma", "description", 3,
 					new Date(System.currentTimeMillis()));
+			i3.setCategoria(percusion);
 			sessionFactory.getCurrentSession().save(i1);
 			sessionFactory.getCurrentSession().save(i2);
 			sessionFactory.getCurrentSession().save(i3);

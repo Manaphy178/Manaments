@@ -2,7 +2,8 @@ package controladores;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,6 +64,7 @@ public class ControladorInstrumento {
 		try {
 			nuevoInstrumento.getFoto().transferTo(new File(rutaSubidas, nombreArchivo));
 			System.out.println("portada del producto subida en: " + rutaRealDelProyecto + "subidas");
+			nuevoInstrumento.setUltimaModificacion(new Date(System.currentTimeMillis()));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -90,6 +92,7 @@ public class ControladorInstrumento {
 			// instrumentoEditar.getFoto().getName();
 			try {
 				instrumentoEditar.getFoto().transferTo(new File(rutaImagen));
+				instrumentoEditar.setUltimaModificacion(new Date(System.currentTimeMillis()));
 				System.out.println("imagen actualizada en la ruta:" + rutaImagen);
 			} catch (IllegalStateException e) {
 				e.printStackTrace();

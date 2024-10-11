@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -14,10 +15,15 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name = "tabla_instrumentos")
 public class Instrumento {
+
+//	asociaciones
+	@ManyToOne()
+	private Categoria categoria;
+
 	@Id
 	@GeneratedValue
 	private int id;
-	@Column(name = "nombre_instrumento",length = 120)
+	@Column(name = "nombre_instrumento", length = 120)
 	private String nombre;
 	private String tipo;
 	private String marca;
@@ -29,7 +35,8 @@ public class Instrumento {
 	private double precio;
 	private Date ultimaModificacion;
 
-	public Instrumento() {}
+	public Instrumento() {
+	}
 
 	public Instrumento(String nombre, String tipo, String marca, String gamma, String description, double precio,
 			Date ultimaModificacion) {
@@ -123,6 +130,21 @@ public class Instrumento {
 
 	public void setUltimaModificacion(Date ultimaModificacion) {
 		this.ultimaModificacion = ultimaModificacion;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	@Override
+	public String toString() {
+		return "Instrumento [categoria=" + categoria + ", id=" + id + ", nombre=" + nombre + ", tipo=" + tipo
+				+ ", marca=" + marca + ", gamma=" + gamma + ", description=" + description + ", foto=" + foto
+				+ ", precio=" + precio + ", ultimaModificacion=" + ultimaModificacion + "]";
 	}
 
 }
